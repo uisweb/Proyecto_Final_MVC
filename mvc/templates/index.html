@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <title>{% block titulo  %}Formulario Persona{% endblock titulo %}</title>
+</head>
+<body>
+{% block cuerpo %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <th>#</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Tipo Documento</th>
+              <th>Documento</th>
+              <th>Lugar de Residencia</th>
+              <th>Fecha Nacimiento</th>
+              <th>Email</th>
+              <th>Telefono</th>
+              <th>Usuario</th>
+              <th>Password</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+          </thead>
+          <tbody>
+            
+            {% for persona in personas %}
+          <tr>
+            <td>{{ persona.id }}</td>
+            <td>{{ persona.nombre }}</td>
+            <td>{{ persona.apellido }}</td>
+            <td>{{ persona.tipodocumento }}</td>
+            <td>{{ persona.documento }}</td>
+            <td>{{ persona.lu_residencia }}</td>
+            <td>{{ persona.fecha_na }}</td>
+            <td>{{ persona.email }}</td>
+            <td>{{ persona.telefono }}</td>
+            <td>{{ persona.usuario }}</td>
+            <td>{{ persona.password }}</td>
+            <td><a href="{% url 'editar_persona' persona.id %}" class="btn btn-warning">Editar</a></td>
+            <td><a href="{% url 'eliminar_persona' persona.id %}" class="btn btn-danger">Eliminar</a></td>
+          </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+        <a href="{% url 'persona'%}" class="btn btn-success">Agregar</a>
+        {% endblock cuerpo %}
+      </div>
+    </div>
+  </div>
+</div>
+ 
+</body>
+</html>

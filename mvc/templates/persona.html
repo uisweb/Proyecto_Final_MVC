@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% block titulo%}Registrar Persona{% endblock titulo%}
+{% block cuerpo%}
+<div class="container-fluid text-center">
+  <br><h2>Formulario Persona</h2><br>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <button type= "sumbit" class="btn btn-success">Guardar</button>
+  <a href="{% url 'index' %}" class="btn btn-warning">Regresar</a></td>
+
+</form>
+</div>
+{% endblock cuerpo%}
+</body>
+
+</html>
